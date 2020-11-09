@@ -10,14 +10,14 @@ public class Postage
   p.sendThis();
   }
   
-  sendThis()
+  public void sendThis()
   {
   getData();
   calculateCost();
   printInfo();
   }
   
-  getData()
+  public void getData()
   {
    Scanner input=new Scanner(System.in);
    System.out.println("\n\n\n");
@@ -27,19 +27,17 @@ public class Postage
    System.out.println("\n\n\n");
    System.out.print("Using the menu above, please enter the category of your postage -> ");
    category=input.nextInt();
-   if(category == 1) 
-   System.out.print("Enter the weight, in ounces, of your letter (an integer) -> ");
-   if(category == 3)
-   System.out.print("Enter the weight, in pounds, of you letter (an integer) -> ")
+   if(category != 2) 
+   System.out.print("Enter the weight, in ounces, of your letter");
    weight=input.nextInt();
-   if(weight<0) 
+   else if(weight<0) 
    System.out.println("The weight you entered is not a valid input. Rerun the program and input a positive integer.");
    
-   if(category>3 || category<1) 
+   else(category>3 || category<1) 
    System.out.println("Invalid category number, it should be 1, 2, or 3");
   }
   
-  calculateCost()
+  public void calculateCost()
   {
     final double F_OUNCE=0.55, ADD_OUNCE=0.15, POSTCARDS=0.35, F_POUND=2.75, ADD_POUND=0.52;
     if (category == 1) 
@@ -50,27 +48,27 @@ public class Postage
     charge=F_POUND+ADD_POUND(weight-1);
   }
  
-  printInfo()
+  public void printInfo()
   {
     String postageClass=new String("");
     if(category == 3)
     postageClass="Media Mail";
     else if(category == 2)
-    postageClass="Postcards, domestic"
+    postageClass="Postcards, domestic";
     else(category == 1)
-    postageClass="First class, domestic"
+    postageClass="First class, domestic";
     System.out.println("\n\n\n");
     System.out.printf("Your postage class: %20s," postageClass);
     
     if(category == 2)
-    System.out.printf("Weight: %20s--," weight)
+    System.out.printf("Weight: %20s--," weight);
     
     if(category == 1)
     System.out.printf("Weight: %20s%d ounces," weight);
     
     if(category == 3)
     System.out.printf("Weight: %20s%d pounds," weight);
-    System.out.println("\n\n")
+    System.out.println("\n\n");
     System.out.printf("Charge: %20s$%.2f," charge);
     System.out.print("Have a nice day!");
   }
