@@ -30,10 +30,9 @@ public class Postage
    if(category != 2) 
    System.out.print("Enter the weight, in ounces, of your letter");
    weight=input.nextInt();
-   else if(weight<0) 
+   if(weight<0) 
    System.out.println("The weight you entered is not a valid input. Rerun the program and input a positive integer.");
-   
-   else(category>3 || category<1) 
+   else if(category>3 || category<1) 
    System.out.println("Invalid category number, it should be 1, 2, or 3");
   }
   
@@ -42,9 +41,9 @@ public class Postage
     final double F_OUNCE=0.55, ADD_OUNCE=0.15, POSTCARDS=0.35, F_POUND=2.75, ADD_POUND=0.52;
     if (category == 1) 
     charge=F_OUNCE+ADD_OUNCE(weight-1);
-    else if(category == 2)
+    if(category == 2)
     charge=POSTCARDS;
-    else(category == 3)
+    else if(category == 3)
     charge=F_POUND+ADD_POUND(weight-1);
   }
  
@@ -53,23 +52,23 @@ public class Postage
     String postageClass=new String("");
     if(category == 3)
     postageClass="Media Mail";
-    else if(category == 2)
+    if(category == 2)
     postageClass="Postcards, domestic";
-    else(category == 1)
+    else if(category == 1)
     postageClass="First class, domestic";
     System.out.println("\n\n\n");
-    System.out.printf("Your postage class: %20s," postageClass);
+    System.out.printf ("Your postage class: %20s," String postageClass);
     
     if(category == 2)
-    System.out.printf("Weight: %20s--," weight);
+    System.out.printf("Weight: %20s--," int weight);
     
     if(category == 1)
-    System.out.printf("Weight: %20s%d ounces," weight);
+    System.out.printf("Weight: %20s%d ounces," int weight);
     
     if(category == 3)
-    System.out.printf("Weight: %20s%d pounds," weight);
+    System.out.printf("Weight: %20s%d pounds," int weight);
     System.out.println("\n\n");
-    System.out.printf("Charge: %20s$%.2f," charge);
+    System.out.printf("Charge: %20s$%.2f," double charge);
     System.out.print("Have a nice day!");
   }
 }
